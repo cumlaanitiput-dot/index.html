@@ -833,6 +833,9 @@ const currencyInfo = {
   AUD: { flag:'🇦🇺', name:'ดอลลาร์ออสเตรเลีย', full:'Australian Dollar' },
   KRW: { flag:'🇰🇷', name:'วอนเกาหลี (per 100)', full:'Korean Won' },
   USD: { flag:'🇺🇸', name:'ดอลลาร์สหรัฐ', full:'US Dollar' },
+  'USD 1': { flag:'🇺🇸', name:'ดอลลาร์สหรัฐ แบงก์ 1', full:'US Dollar $1' },
+  'USD 5-20': { flag:'🇺🇸', name:'ดอลลาร์สหรัฐ แบงก์ 5-20', full:'US Dollar $5-20' },
+  'USD 50-100': { flag:'🇺🇸', name:'ดอลลาร์สหรัฐ แบงก์ 50-100', full:'US Dollar $50-100' },
 };
 
 let rates = {};
@@ -865,7 +868,8 @@ async function fetchRates() {
   try {
     const res = await fetch(SHEET_URL);
     const data = await res.json();
-    Object.entries(data).forEach(([code, r]) => {
+    Object.entries(data).forEach(([rawCode, r]) => {
+      const code = String(rawCode).replace(/\s+/g, ' ').trim();
       if (currencyInfo[code]) {
         rates[code] = { ...currencyInfo[code], buy: r.buy, sell: r.sell };
       }
