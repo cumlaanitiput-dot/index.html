@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- พื้นหลังวงกลมสีขาว -->
+  <circle cx="50" cy="50" r="50" fill="#ffffff"/>
+  <!-- วงกลมขอบสีทอง -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="#C8922A" stroke-width="3"/>
+  <!-- รูปโลโก้ WP จาก logo.jpg -->
+  <image href="logo.jpg" x="10" y="10" width="80" height="80" 
+         clip-path="url(#circle-clip)"/>
+  <clipPath id="circle-clip">
+    <circle cx="50" cy="50" r="45"/>
+  </clipPath>
+</svg>
